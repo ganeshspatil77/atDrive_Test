@@ -1,0 +1,31 @@
+<div class="container mt-3">
+  <h3>Exchange Rates</h3>
+
+  <label for="baseCurrency">Select Base Currency:</label>
+  <select
+    id="baseCurrency"
+    [(ngModel)]="base"
+    (change)="onBaseChange()"
+    class="form-select w-auto mb-3"
+    name="baseCurrency"
+  >
+    <option *ngFor="let currency of availableBases" [value]="currency">
+      {{ currency }}
+    </option>
+  </select>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Currency</th>
+        <th>Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entry of rates | keyvalue">
+        <td>{{ entry.key }}</td>
+        <td>{{ entry.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
